@@ -2,6 +2,6 @@
 
 int main()
 {
-	printf("Brand new reposiroty for GitHub");
+	printf("Brand new repository for GitHub");
 	return 0;
 }
