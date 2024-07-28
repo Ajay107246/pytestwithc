@@ -1,0 +1,64 @@
+terminal out:
+28.07.2024:
+gcc -shared -o main.dll main.c 
+(.venv) PS G:\C practice\projectC\projCC> py -m pytest -v -s
+======================================================= test session starts =======================================================
+platform win32 -- Python 3.12.4, pytest-8.3.2, pluggy-1.5.0 -- G:\C practice\projectC\projCC\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: G:\C practice\projectC\projCC
+collected 1 item
+
+test_main.py::TestMain::test_add PASSED
+
+======================================================== 1 passed in 0.04s ======================================================== 
+(.venv) PS G:\C practice\projectC\projCC> 
+ gcc -shared -o main.so main.c
+(.venv) PS G:\C practice\projectC\projCC> py -m pytest -v -s
+======================================================= test session starts =======================================================
+platform win32 -- Python 3.12.4, pytest-8.3.2, pluggy-1.5.0 -- G:\C practice\projectC\projCC\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: G:\C practice\projectC\projCC
+collected 1 item
+
+test_main.py::TestMain::test_add PASSED
+
+======================================================== 1 passed in 0.04s ======================================================== 
+(.venv) PS G:\C practice\projectC\projCC> 
+
+TEST_RESULT:
+28.07.2024:
+Received JSON data in run
+test_add (test_main.TestMain.test_add) ... setUp (inside class) called...!
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+Finished running tests!
+----------------------------------------------------------------------
+# assert libmain.add(20,5) == 5, f"Invalid sum result" # trial for failed TC
+output:
+============================================================ FAILURES ============================================================= 
+____________________________________________________________ test_add2 ____________________________________________________________ 
+
+libmain = <CDLL 'G:\C practice\projectC\projCC\main.so', handle 7ffbd27e0000 at 0x1d97aefd130>
+
+    def test_add2(libmain):
+        print("test_add2 (outside class) called...!\n")
+        assert libmain.add(4,7) == 11
+        assert libmain.add(10,5) == 15
+>       assert libmain.add(20,5) == 5, f"Invalid sum result"
+E       AssertionError: Invalid sum result
+E       assert 25 == 5
+E        +  where 25 = <_FuncPtr object at 0x000001D97AF71640>(20, 5)
+E        +    where <_FuncPtr object at 0x000001D97AF71640> = <CDLL 'G:\C practice\projectC\projCC\main.so', handle 7ffbd27e0000 at 
+0x1d97aefd130>.add
+
+test_main.py:34: AssertionError
+===================================================== short test summary info ===================================================== 
+FAILED test_main.py::test_add2 - AssertionError: Invalid sum result
+=================================================== 1 failed, 2 passed in 0.28s =================================================== 
+(.venv) PS G:\C practice\projectC\projCC> 
+
+========================================================================================================== 
