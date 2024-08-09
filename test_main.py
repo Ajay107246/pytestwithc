@@ -9,6 +9,36 @@ NOTE:
 gcc -shared -o main.so main.c
 5. run pytest
 py -m pytest -v -s
+6. to generate html form:
+ [make sure coverage is installed]
+ py -m pip install coverage
+
+ py -m coverage run -m pytest
+ py -m coverage html
+
+ results -> Open the htmlcov/index.html  
+ NOTE, Link: https://coverage.readthedocs.io/en/7.6.1/
+
+ Alternative : py -m pytest --cov=. --cov-report=html
+7. optional: 
+py -m coverage report -m
+
+result -> 
+Name           Stmts   Miss  Cover   Missing
+--------------------------------------------
+test_main.py      30     17    43%   34-37, 55-56, 59-60, 67, 71, 73-82, 100
+--------------------------------------------
+TOTAL             30     17    43%
+
+7.[make sure gcovr is installed
+py -m pip install gcovr]
+py -m gcovr -r . --html --html-details -o coverage.html
+
+8. coverage.info -> optional
+py -m pytest --cov=. --cov-report=lcov:coverage.info
+py -m coverage lcov -o coverage.info
+
+
 """
 
 import ctypes

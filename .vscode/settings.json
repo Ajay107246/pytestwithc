@@ -12,5 +12,6 @@
         "test_*.py"
     ],
     "python.testing.pytestEnabled": true,
-    "python.testing.unittestEnabled": true
+    "python.testing.unittestEnabled": true,
+    "livePreview.defaultPreviewPath": "/htmlcov/test_main_py.html"
 }
